@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Đây là trang quản lý department</h1>
+
+<a th:href="@{/department/create}">THÊM Bộ PHẬN MỚI</a>
+<table id="employeeTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Discription</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="department : ${department}">
+        <td th:text="${department.id}"></td>
+        <td th:text="${department.name}"></td>
+        <td th:text="${department.email}"></td>
+        <td><a th:href="@{'/department/edit/' + ${department.id}}">Sửa</a></td>
+        <td><a th:href="@{'/department/delete/' + ${department.id}}">Xóa</a></td>
+    </tr>
+    <span th:text="${message}"></span>
+    </tbody>
+
+</table>
+</body>
+</html>

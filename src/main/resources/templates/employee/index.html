@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Đây là trang quản lý nv</h1>
+<form class="search-bar" method="get" th:action="@{/employees/search}">
+    <input type="text" name="textSearch" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+<button></button>
+<a th:href="@{/employee/create}">THÊM NHÂN VIÊN MỚI</a>
+<table id="employeeTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Bộ phận</th>
+        <th>Role</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="employee : ${employee}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.departmentId}"></td>
+        <td th:text="${employee.roles}"></td>
+        <td><a th:href="@{'/employee/edit/' + ${employee.id}}">Sửa</a></td>
+        <td><a th:href="@{'/employee/delete/' + ${employee.id}}">Xóa</a></td>
+    </tr>
+    <span th:text="${message}"></span>
+    </tbody>
+
+</table>
+</body>
+</html>
