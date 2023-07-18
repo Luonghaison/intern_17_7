@@ -10,7 +10,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    int id;
+    Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "description")
@@ -19,17 +19,17 @@ public class Department {
     public Department() {
     }
 
-    public Department(int id, String name, String description) {
+    public Department(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

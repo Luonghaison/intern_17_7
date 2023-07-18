@@ -2,11 +2,15 @@ package com.example.intern_14_7.dto;
 
 import com.example.intern_14_7.model.Department;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 public class EmployeeDto {
     private Long id;
+    @NotEmpty(message = "Tên không được để trống")
     private String name;
+    @Email(message = "Email không đúng định dạng")
     private String email;
     private Department department;
     private Set<String> role;

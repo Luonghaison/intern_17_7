@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
 <body>
+<div layout:fragment="content">
 <h1>Đây là trang quản lý department</h1>
 
 <a th:href="@{/department/create}">THÊM Bộ PHẬN MỚI</a>
@@ -27,7 +25,7 @@
     </tr>
     <span th:text="${message}"></span>
     </tbody>
-
 </table>
+    </div>
 </body>
 </html>

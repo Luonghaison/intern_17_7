@@ -15,9 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -37,6 +39,13 @@ public class DepartmentController {
         model.addAttribute("employee", departments);
         return "department/index";
     }
+
+    @GetMapping("/detaillist")
+    public String showDetaillist(Model model, @RequestParam(required = false) String textSearch) {
+        List<Department> departments = departmentService.findAll();
+        model.addAttribute("employee", departments);
+        return "department/index";
+    }
     @GetMapping("/index")
     public static ModelAndView index(){
         ModelAndView modelAndView=new ModelAndView("index");
@@ -50,7 +59,11 @@ public class DepartmentController {
     }
 
     @PostMapping("/add")
-    public ModelAndView doAdd(@ModelAttribute("department") Department department) {
+    public ModelAndView doAdd(@ModelAttribute("department") @Valid Department department, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            ModelAndView modelAndView = new ModelAndView("department/create");
+            return modelAndView;
+        }
         departmentService.save(department);
         ModelAndView modelAndView = new ModelAndView("department/index");
         modelAndView.addObject("department", department);
@@ -69,8 +82,11 @@ public class DepartmentController {
     }
 
     @PostMapping("/edit/{id}")
-    public String doEdit(@PathVariable Long id, @ModelAttribute("department") Department department) {
-        department.setId(Math.toIntExact(id));
+    public String doEdit(@PathVariable Long id, @ModelAttribute("department") @Valid Department department,BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return "department/edit";
+        }
+        department.setId(id);
         departmentService.save(department);
         return "redirect:/department/detail";
     }

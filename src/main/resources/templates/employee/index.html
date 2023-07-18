@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+
+<div layout:fragment="content">
 <h1>Đây là trang quản lý nv</h1>
-<form class="search-bar" method="get" th:action="@{/employees/search}">
+<form class="search-bar" method="get" th:action="@{/employee/detail}">
     <input type="text" name="textSearch" placeholder="Search...">
     <button type="submit">Search</button>
 </form>
@@ -24,9 +22,8 @@
         <th></th>
     </tr>
     </thead>
-
     <tbody>
-    <tr th:each="employee : ${employee}">
+    <tr th:each="employee : ${employeePage}">
         <td th:text="${employee.id}"></td>
         <td th:text="${employee.name}"></td>
         <td th:text="${employee.email}"></td>
@@ -37,7 +34,7 @@
     </tr>
     <span th:text="${message}"></span>
     </tbody>
-
 </table>
-</body>
+</div>
+
 </html>

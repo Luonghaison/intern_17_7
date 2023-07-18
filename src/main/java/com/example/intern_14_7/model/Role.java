@@ -11,26 +11,26 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    int id;
+    private String id;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "discription")
-    String discription;
+    private String discription;
 
     public Role() {
     }
 
-    public Role(int id, String name, String discription) {
+    public Role(String id, String name, String discription) {
         this.id = id;
         this.name = name;
         this.discription = discription;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

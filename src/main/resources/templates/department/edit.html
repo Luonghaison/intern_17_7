@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
 <body>
+<div layout:fragment="content">
 <form th:action="@{'/department/edit/' + ${department.getId()}}" th:object="${department}" method="post">
     <div class="form-group">
         <label for="name">Tên bộ phận</label>
@@ -16,5 +14,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
+</div>
 </body>
 </html>

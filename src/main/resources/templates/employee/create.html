@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+
 <body>
+<div layout:fragment="content">
 <form th:action="@{/employee/add}" th:object="${employee}" method="post">
   <div class="form-group">
     <label for="name">Họ và tên:</label>
@@ -21,13 +19,16 @@
       <option th:each="d : ${departments}" th:value="${d.id}" th:text="${d.name}"></option>
     </select>
   </div>
-<!--  <div>-->
-<!--    <p>RoleId</p>-->
-<!--    <select th:field="*{roles}">-->
-<!--      <option th:each="r : ${roles}" th:value="${r.id}" th:text="${r.name}"></option>-->
-<!--    </select>-->
-<!--  </div>-->
+
+  <div>
+    <p>RoleId</p>
+    <select th:field="*{roles}">
+      <option th:each="r : ${roless}" th:value="${r.id}" th:text="${r.name}"></option>
+    </select>
+  </div>
+
   <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
+</div>
 </body>
 </html>

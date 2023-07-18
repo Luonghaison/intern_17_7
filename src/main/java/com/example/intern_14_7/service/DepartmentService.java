@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
@@ -15,6 +17,9 @@ public class DepartmentService {
 
     public Page<Department> findAll(Pageable pageable) {
         return departmentRepository.findAll(pageable);
+    }
+    public List<Department> findAll() {
+        return departmentRepository.findAll();
     }
 
     public Department findById(Long id) {
@@ -28,7 +33,6 @@ public class DepartmentService {
     public void deleteById(Long id) {
         departmentRepository.deleteById(id);
     }
-
     public Page<Department> findByNameContainingIgnoreCase(String name, Pageable pageable) {
         return departmentRepository.findByNameContainingIgnoreCase(name, pageable);
     }
