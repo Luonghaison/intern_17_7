@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="UTF-8">
+    <title >Trang Edit Department</title>
+</head>
 <body>
 <div layout:fragment="content">
 <form th:action="@{'/department/edit/' + ${department.getId()}}" th:object="${department}" method="post">

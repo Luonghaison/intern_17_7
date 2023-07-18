@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="UTF-8">
+    <title >Trang quản lý Department</title>
+</head>
 <body>
 <div layout:fragment="content">
-<h1>Đây là trang quản lý department</h1>
-
 <a th:href="@{/department/create}">THÊM Bộ PHẬN MỚI</a>
 <table id="employeeTable">
     <thead>
@@ -19,7 +21,7 @@
     <tr th:each="department : ${department}">
         <td th:text="${department.id}"></td>
         <td th:text="${department.name}"></td>
-        <td th:text="${department.email}"></td>
+        <td th:text="${department.description}"></td>
         <td><a th:href="@{'/department/edit/' + ${department.id}}">Sửa</a></td>
         <td><a th:href="@{'/department/delete/' + ${department.id}}">Xóa</a></td>
     </tr>

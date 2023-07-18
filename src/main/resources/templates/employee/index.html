@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="UTF-8">
+    <title >Trang quản lý employee</title>
+</head>
 
 <div layout:fragment="content">
-<h1>Đây là trang quản lý nv</h1>
 <form class="search-bar" method="get" th:action="@{/employee/detail}">
     <input type="text" name="textSearch" placeholder="Search...">
     <button type="submit">Search</button>

@@ -2,6 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html layout:decorate="~{layout/layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="UTF-8">
+    <title >Trang Edit Employee</title>
+</head>
 <body>
 <div layout:fragment="content">
 <form th:action="@{'/employee/edit/' + ${employee.getId()}}" th:object="${employee}" method="post">

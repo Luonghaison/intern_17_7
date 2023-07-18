@@ -10,6 +10,11 @@
 <body>
 <header th:insert="layout/navbar :: navba"></header>
 
+<head><head>
+  <meta charset="UTF-8">
+  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">My website</title>
+</head>
+
 <div class="container">
   <div layout:fragment="content">
     <h1>Welcome to our website!</h1>

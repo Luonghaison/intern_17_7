@@ -32,24 +32,11 @@ public class DepartmentController {
         this.departmentService = departmentService;
         this.departmentMapper = departmentMapper;
     }
-
     @GetMapping("/detail")
-    public String showDetail(Pageable pageable, Model model, @RequestParam(required = false) String textSearch) {
-        Page<Department> departments = departmentService.findAll(pageable);
-        model.addAttribute("employee", departments);
-        return "department/index";
-    }
-
-    @GetMapping("/detaillist")
-    public String showDetaillist(Model model, @RequestParam(required = false) String textSearch) {
+    public String showDetail(Model model, @RequestParam(required = false) String textSearch) {
         List<Department> departments = departmentService.findAll();
-        model.addAttribute("employee", departments);
+        model.addAttribute("department", departments);
         return "department/index";
-    }
-    @GetMapping("/index")
-    public static ModelAndView index(){
-        ModelAndView modelAndView=new ModelAndView("index");
-        return modelAndView;
     }
 
     @GetMapping("/create")
